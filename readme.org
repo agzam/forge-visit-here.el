@@ -1,0 +1,21 @@
+* What does it do?
+ It simply takes a link like:
+ https://github.com/magit/forge/blob/master/lisp/forge-core.el#L23
+
+ or:
+
+ https://github.com/magit/forge/blob/15d006d1aa7df254d8cd4521aaf209ec56de8465/lisp/forge-commands.el#L14
+
+ And attempts to open the file locally in Magit, assuming you have already cloned the repository.
+* FAQ
+- How do I use it?
+  + Copy a GitHub link and call the function.
+
+- Why a separate package if it only has one function?
+  + Because I'd like to test it out first, before proposing this to be part of magit or magit-forge.
+
+- Does it only work with GitHub links?
+  + In theory it should also work with GitLab, but I have never tested
+
+- Are you going to publish it on MELPA?
+  + I will. I just need to make sure this thing works first. It is at the very experimental stage.
