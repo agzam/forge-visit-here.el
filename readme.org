@@ -6,16 +6,38 @@
 
  https://github.com/magit/forge/blob/15d006d1aa7df254d8cd4521aaf209ec56de8465/lisp/forge-commands.el#L14
 
- And attempts to open the file locally in Magit, assuming you have already cloned the repository.
+And attempts to open the file locally in Magit, assuming you have already cloned the repository.
+* How to use
+Install and load using your favorite method. The package is not published on MELPA, for now you can use quelpa.
+here's how I do it:
+
+#+begin_src emacs-lisp
+(require 'quelpa-use-package)
+
+(use-package forge-visit-here
+  :quelpa (forge-visit-here
+            :fetcher github
+            :repo "agzam/forge-visit-here.el"))
+#+end_src
+
+- Grab a GitHub link, e.g: https://github.com/foo/bar/blame/master/src/main.clj#L15
+- Copy the link
+- Run the function ~M-x forge-visit-here~
+
+
+If you set ~magit-repository-directories~, it would not prompt you for the directory of the repo, it'll just grab it from the list.
+
+i.e.: if the directory for ~foo~ project (used in the link above) is at: =~/dev-projects/foo=,
+and ~(setq magit-repository-directories '(("~/dev-projects" . 2)))~,
+it will try to open the file in that repo, without asking for its directory.
+
 * FAQ
-- How do I use it?
-  + Copy a GitHub link and call the function.
+  + Why a separate package if it only has one function?
+    + Because I'd like to test it out first, before proposing this to be part of magit or magit-forge.
+    + Also, potentially it can grow to be a bit bigger. I have some ideas I want to implement.
 
-- Why a separate package if it only has one function?
-  + Because I'd like to test it out first, before proposing this to be part of magit or magit-forge.
+  + Does it only work with GitHub links?
+    + In theory it should also work with GitLab, but I have never tested
 
-- Does it only work with GitHub links?
-  + In theory it should also work with GitLab, but I have never tested
-
-- Are you going to publish it on MELPA?
-  + I will. I just need to make sure this thing works first. It is at the very experimental stage.
+  + Are you going to publish it on MELPA?
+    + I will. I just need to make sure this thing works first. It is at the very experimental stage.
